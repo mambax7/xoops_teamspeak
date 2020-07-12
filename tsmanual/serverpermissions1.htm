@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Server Permissions</title>
+<link rel="stylesheet" href="C1H_HTML.css" type="text/css">
+<style type="text/css">
+ p { margin-top: 0; margin-bottom: 0; }
+</style>
+<script language="JavaScript" src="DocToHelp.js">
+</script>
+</head>
+<body
+ style="background-color: #FFFFFF;
+        background-image: url(none);
+        background-repeat: no-repeat;"
+ onload="d2hload()"
+ onmousedown="d2hpopup()"
+>
+<div id="ienav">
+<ilayer id="nsnav">
+<p align="center">
+
+<a href="RC2servermanual-toc.htm" target="left">Contents</a> &nbsp;
+
+
+<a href="RC2servermanual-index.htm" target="left">Index</a> &nbsp;
+
+
+
+<a href="serversettings1.htm">Previous</a> &nbsp;
+<a href="usermanager1.htm">Next</a>
+
+
+</p>
+<br>
+<hr noshade size="1">
+</ilayer>
+</div>
+<p class=kop-3>Server Permissions</p>
+<p class=kop-3-p>&nbsp;</p>
+<p class=standaard>This is were the real power of RC2 comes into play. TeamSpeak 2 works with 6 statuses for the client:</p>
+<p class=standaard>Server Admin, Channel Admin, Operator, Voiced, Registered and Anonymous</p>
+<p class=standaard>For each of these statuses you can set permissions (what they are allowed to do on your server and what they are not allowed). If you check a radiobutton behind a permission, it will be enabled. Unchecked, this permission is disabled for the specific status. This manual will go over the options of the Server Admin only. Since the other statuses only have fewer permissions than stated in this status all things can be applied to the other statuses too. I will go over the permissions one by one:</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>AccessWebAdminServer: SA can access the webadmin function</p>
+<p class=standaard>AccessTcpServer: SA can access the TCPquery function</p>
+<p class=standaard>AccesVoice: SA can login in via the client to the TeamSpeak server</p>
+<p class=standaard>AdminRegisterPlayer: SA can register a user in the client</p>
+<p class=standaard>AdminListDBUsers: SA can see what users are registered in the webadmin</p>
+<p class=standaard>AdminChangeOwnPassword: SA can change own password</p>
+<p class=standaard>AdminChangeUserPassword: SA can change user&#8217;s password</p>
+<p class=standaard>AdminSetServerPermissions: SA can set the permissions on a server</p>
+<p class=standaard>AdminListDBServers: SA can see what servers are running on a TeamSpeak server instance.</p>
+<p class=standaard>AdminAddServer: SA can add a server to a TeamSpeak server instance</p>
+<p class=standaard>AdminDeleteServer: SA can delete a server</p>
+<p class=standaard>AdminEditServerIPPort: SA can change the port of a server</p>
+<p class=standaard>AdminEditServerWebpostURL: SA can set the Webpost URL</p>
+<p class=standaard>AdminEditServerName: SA can set the servername</p>
+<p class=standaard>AdminEditServerMaxUsers: SA can set the max server users.</p>
+<p class=standaard>AdminEditServerWelcomeMessage: SA can set the welcome message on a server</p>
+<p class=standaard>AdminEditServerPassword: SA can set the server password</p>
+<p class=standaard>AdminEditServertype: SA can set the server as Clan or Public</p>
+<p class=standaard>AdminEditServerAllowedCodecs: SA can set the allowed codecs on a server</p>
+<p class=standaard>AdminBanIP: SA can use the Ban IP function in the client</p>
+<p class=standaard>AdminMovePlayer: SA can drag and drop players in the client over channels</p>
+<p class=standaard>AdminStopServer: SA can stop a running server</p>
+<p class=standaard>AdminStartServer: SA can start a server</p>
+<p class=standaard>ChannelJoinedRegistered: SA can join a registered channel</p>
+<p class=standaard>ChannelCreateRegistered: SA can create a registered channel in the client</p>
+<p class=standaard>ChannelCreateUnregistered: SA can create a unregistered channel</p>
+<p class=standaard>ChannelCreateDefault: SA can make a default channel (first channel when you join a server)</p>
+<p class=standaard>ChannelCreatSubchannels: SA can create subchannels</p>
+<p class=standaard>ChannelCreateModerated: SA can create moderated channels</p>
+<p class=standaard>ChannelDelete: SA can delete a channel in the client</p>
+<p class=standaard>ChannelEditName: SA can change the channel name</p>
+<p class=standaard>ChannelEditPassword: SA can change the channel password</p>
+<p class=standaard>ChannelEditTopic: SA can change the channel topic</p>
+<p class=standaard>ChannelEditDescription: SA can change the channel description</p>
+<p class=standaard>ChannelEditOrder: SA can set the order of a channel</p>
+<p class=standaard>ChannelEditMaxusers: SA can set the maximum amount of users in a channel</p>
+<p class=standaard>ChannelEditCodec: SA can set the codec used by the channel</p>
+<p class=standaard>ChannelJoinWithoutPassword: SA can join every channel, even password protected ones</p>
+<p class=standaard>PrivilegeGrantSA: SA can give SA status to other users</p>
+<p class=standaard>PrivilegeGrantCA: SA can give CA status to other users</p>
+<p class=standaard>PrivilegeGrantAutoOp: SA can give AutoOperator status to other users</p>
+<p class=standaard>PrivilegeGrantOp: SA can give Operator status to other users</p>
+<p class=standaard>PrivilegeGrantAutoV: SA can give AutoVoice to other users</p>
+<p class=standaard>PrivilegeGrantV: SA can give Voice to other users</p>
+<p class=standaard>PrivilegeGrantAllowRegistration: SA can allow users to register with server</p>
+<p class=standaard>PrivilegeRevokeX: SA can revoke the status permissions earlier given to users</p>
+<p class=standaard>PriviligeAdminPlayerRegister: SA can allow user to make them register users</p>
+<p class=standaard>PrivilegePlayerDelete: SA can delete registered users in the webadmin</p>
+<p class=standaard>PrivilegeRegisterSelfByDefault: Users with the SA status can always register with server</p>
+<p class=standaard>SendTextToAll: SA can send text to all users currently on the server</p>
+<p class=standaard>SendTextToOwnChannel: SA can send text to a channel they created</p>
+<p class=standaard>SendTextToAllChannel: SA can send text to all channels of a server</p>
+<p class=standaard>KickPlayerFromServer: SA can kick a user off a server</p>
+<p class=standaard>KickPlayerFromChannel: SA can kick a user to the default channel</p>
+<p class=standaard>AllowChannelCommander: SA can set the channel commander to him/herself</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>These are all the configurable permissions (other statuses than SA have fewer options as you will see in the respective pages but they are listed above. Just replace the SA name in the sentences above here with the status you are editing)</p>
+<p class=standaard>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="popupDiv">
+</div>
+</body>
+</html>

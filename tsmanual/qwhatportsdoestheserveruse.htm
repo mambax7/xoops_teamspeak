@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Q: What ports does the server use?</title>
+<link rel="stylesheet" href="C1H_HTML.css" type="text/css">
+<style type="text/css">
+ p { margin-top: 0; margin-bottom: 0; }
+</style>
+<script language="JavaScript" src="DocToHelp.js">
+</script>
+</head>
+<body
+ style="background-color: #FFFFFF;
+        background-image: url(none);
+        background-repeat: no-repeat;"
+ onload="d2hload()"
+ onmousedown="d2hpopup()"
+>
+<div id="ienav">
+<ilayer id="nsnav">
+<p align="center">
+
+<a href="RC2servermanual-toc.htm" target="left">Contents</a> &nbsp;
+
+
+<a href="RC2servermanual-index.htm" target="left">Index</a> &nbsp;
+<a href="frequentlyaskedquestions1.htm">Previous</a> &nbsp;
+<a href="qilostmyserveradminpassword.htm">Next</a>
+
+
+
+</p>
+<br>
+<hr noshade size="1">
+</ilayer>
+</div>
+<p class=kop-4>Q: What ports does the server use?</p>
+<p class=kop-4-p>&nbsp;</p>
+<p class=standaard>A: The TeamSpeak Server uses the following ports:<br>
+8767 UDP, for the server itself.<br>
+Adjustable in the server.ini: ServerUDPPort=8767<br>
+14534 TCP, WebInterface<br>
+Adjustablein the server.ini: HTTPServer Port=14534<br>
+51234 TCP, TCPQuery port<br>
+Adjustable in the server.ini: TCPQueryPort=51234<br>
+<br>
+To get server to work behind firewall, nat, masq you need only to open/forward the server port (in the above case: 8767 UDP).</p>
+<p>&nbsp;</p>
+<div id="popupDiv">
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Installing the server</title>
+<link rel="stylesheet" href="C1H_HTML.css" type="text/css">
+<style type="text/css">
+ p { margin-top: 0; margin-bottom: 0; }
+</style>
+<script language="JavaScript" src="DocToHelp.js">
+</script>
+</head>
+<body
+ style="background-color: #FFFFFF;
+        background-image: url(none);
+        background-repeat: no-repeat;"
+ onload="d2hload()"
+ onmousedown="d2hpopup()"
+>
+<div id="ienav">
+<ilayer id="nsnav">
+<p align="center">
+
+<a href="RC2servermanual-toc.htm" target="left">Contents</a> &nbsp;
+
+
+<a href="RC2servermanual-index.htm" target="left">Index</a> &nbsp;
+
+
+
+<a href="linuxinstalling.htm">Previous</a> &nbsp;
+<a href="startinguptheserver1.htm">Next</a>
+
+
+</p>
+<br>
+<hr noshade size="1">
+</ilayer>
+</div>
+<p class=kop-3>Installing the server</p>
+<p class=kop-3-p>&nbsp;</p>
+<p class=standaard>Installing the server under linux is really easy. We will walk you through it here. The linux server was compiled for the i386 architecture. Systems running linux under a different architecture will not be able to run these binaries. </p>
+<p class=standaard>After downloading the package could have a  .tar.tar extension. You can easily fix it by renaming the archive with: </p>
+<p class=standaard>mv server_linux_version_number.tar.tar server_linux_version_number.tar.bz2</p>
+<p class=standaard>You can also completely disregard the extension and extract it with tar &#8211;jxvf.</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>You need to unpack it with the following command:</p>
+<p class=standaard>tar &#8211;jxvf server_linux_version_number. </p>
+<p class=standaard>A number of files will be unpacked in a tss_rc2 directory. Unpacking is installing in the case of the linux server. So if you&#8217;re done extracting, you have installed the server.</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>We recommend making a special user for running the TeamSpeak server instead of running it under root. You can do this with this command: </p>
+<p class=standaard>adduser tss. </p>
+<p class=standaard>This user will have a dir named /home/tss. Move the archive to that directory and unpack the files there or move the files to this directory if you already have extracted the archive. Make sure that all the files have the correct owner. If you are not sure do: </p>
+<p class=standaard>chown tss:tss * </p>
+<p class=standaard>when in the directory containing the files. </p>
+<p class=standaard>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="popupDiv">
+</div>
+</body>
+</html>

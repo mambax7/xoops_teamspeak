@@ -1,0 +1,23 @@
+
+CHANGELOG:
+
+January 2003:	First release. V1.0
+January 2004:	Updated. Added mod to only allow by IP. V1.1
+Mar 31, 2004:	Updated. Fixed a bug that kept good users from seening page.
+Nov 06, 2004:   Added functionality to block ip groups (ie: 22.22.22.x)
+
+
+--[ End ]---------------------------------------------------
+
+Web hosting: Our perfered host is Digitaledge.com, 
+http://www.digitaledge.com.
+
+Please visit http://www.robscripts.com for more scripts, support or 
+custom programming.
+
+
+You may not resell or re-package this script and support files without 
+prior written authorization. The script is as-is.
+
+This script is (C) copyright 2002-2004 Robert Murdock (robert@darpac.com).  
+

@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>How to run the TeamSpeak server as a service under WinXP and 2000</title>
+<link rel="stylesheet" href="C1H_HTML.css" type="text/css">
+<style type="text/css">
+ p { margin-top: 0; margin-bottom: 0; }
+</style>
+<script language="JavaScript" src="DocToHelp.js">
+</script>
+</head>
+<body
+ style="background-color: #FFFFFF;
+        background-image: url(none);
+        background-repeat: no-repeat;"
+ onload="d2hload()"
+ onmousedown="d2hpopup()"
+>
+<div id="ienav">
+<ilayer id="nsnav">
+<p align="center">
+
+<a href="RC2servermanual-toc.htm" target="left">Contents</a> &nbsp;
+
+
+<a href="RC2servermanual-index.htm" target="left">Index</a> &nbsp;
+
+
+
+<a href="webpost3.htm">Previous</a> &nbsp;
+<a href="licensing1.htm">Next</a>
+
+
+</p>
+<br>
+<hr noshade size="1">
+</ilayer>
+</div>
+<p class=kop-3>How to run the TeamSpeak server as a service under WinXP and 2000</p>
+<p class=kop-3-p>&nbsp;</p>
+<p class=standaard>Download the firedaemon lite program from <a href="http://firedaemon.com/"><span class=hyperlink>http://firedaemon.com/</span></a></p>
+<p class=standaard>On the main screen that shows the services and their corresponding status, choose Service | New. The New Service Definition window will appear. Under Short Name, put what you want to call it (ie "TeamSpeak"), a display name will default to what the short name is.<br>
+<br>
+For the working directory, browse (or paste) the location for your TeamSpeak2 directory which has server_windows.exe in it (default is C:\Program Files\Teamspeak2). For the Executeable, browse and choose the server_windows.exe file (default is C:\Program Files\Teamspeak2\server_windows.exe) which needs to be in the Working Directory.<br>
+<br>
+Switch over to the Settings tab. Put a check box to Interact with Desktop (if you want--gives a GUI for administration purposes). Have the Show Window option Normal. Under Start-Up Mode, choose Automatic. This will load TeamSpeak as soon as your box boots. Choose the Process Priority you would like TeamSpeak to have (normal should suffice).<br>
+<br>
+Now, save the settings somewhere, and choose Install to install the service. FireDaemon should automatically start the TeamSpeak Service, if not, highlight the TeamSpeak Service and choose Service | Start....<br>
+<br>
+If you need to edit the service for any reason, highlight the service and choose Service | Edit....<br>
+<br>
+Also of importance is the Windows operating system the server runs on. If the server will be hosted on a Windows XP system, unfortunately, ya gonna have probs <img border=0 src="_TeamSpeak%20RC2%20Server%20manual-1.png">. You might notice the server crash when Windows goes to the welcome screen. Search the boards if this is your case. What others have noticed and I, is that Service Pack 1 is the cause. I uninstalled WinXP SP1 and TS has not crashed yet.</p>
+<p class=standaard>&#160;</p>
+<p class=standaard>(Thanks to Zero-Point)</p>
+<p class=standaard>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="popupDiv">
+</div>
+</body>
+</html>

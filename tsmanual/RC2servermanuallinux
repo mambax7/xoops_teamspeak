@@ -1,0 +1,413 @@
+*******************************
+* TeamSpeak RC2 Server manual
+* Linux txt edition
+* By: Wouter Kitsz
+*
+*******************************
+------------------------------------------------
+Contents:
+1 What is the TeamSpeak 2 server?
+2 Requirements to run the TeamSpeak 2 server
+3 What's new in TeamSpeak Release Candidate 2
+4 Bandwidth and codecs
+5 Linux: installing
+	5.1 Installing the server
+	5.2 Starting up the server
+	5.3 Closing down the server
+6 Ports
+7 Webpost
+8 Main Config
+9 Webadminning the server
+	9.1 Logging in
+	9.2 Superadmin
+	9.3 Server settings
+	9.4 Server Permissions
+	9.5 User Manager
+	9.6 Logout
+10 TCPquery function
+11 Miscellaneous
+	11.1 Webpost
+12 Licensing
+13 Frequently Asked Questions
+	13.1 What ports does the server use?
+	13.2 I lost my server admin password
+	13.3 What support does TeamSpeak offer?
+14 Last Notes
+------------------------------------------------
+
+
+
+
+1: What is the TeamSpeak 2 server?
+The TeamSpeak 2 server is the application that allows the clients to talk to each other. 
+The clients log in to the server and the server handles all the traffic and make sure that 
+everybody can hear each other. In other words it is a meeting point. There are 2 platforms 
+on which the server can be installed: Linux and Windows. Both have the same functionality 
+and the clients won't notice any difference. 
+
+
+2: Requirements to run the TeamSpeak 2 server
+The minimal requirements for the TeamSpeak server for Windows (98, 98SE, NT4, 2000, XP) is 
+a Pentium 166 with 64 mb memory for 98 and 98SE and a Pentium II class processor and 128 mb 
+memory for the other Windows flavours. 
+For a console Linux box (without running a Graphical User Interface like an X server or 
+equivalents) a Pentium 100 with 32 mb memory will suffice and with a Graphical User Interface 
+we recommend a Pentium 166 with 64 mb of memory. 
+
+
+3: What's new in TeamSpeak Release Candidate 2
+The Release Candidate 2 has a complete new system of permissions. We've included a new database
+which makes managing the server more complete and easier than ever. All editing actions are done 
+realtime and the changes you made to a server will reflect instantly in the client (like Server 
+name, Server Welcome message and permissions).
+Most important is the ability to change the permissions on a per status basis (server admin, 
+channel admin, operator a.s.o.) so you can set the server up with the maximum of flexibility and 
+completely to your needs.
+
+
+4: Bandwidth and codecs 
+The codec a channel uses is defined by an admin client. There are 5 codecs available ranging from 
+the 5.1 CELP codec to the 16.4 GSM codec. These codecs produce different amounts of traffic for 
+the server. The server itself at this point in time doesn't support audio mixing and streaming such 
+into one stream (the reason for this is that the server would require massive CPU cycles to decode 
+all data streams and then mixing multiple streams together and encode it again). To calculate the 
+amount of upload traffic per second of a single channel running TeamSpeak deamon under normal 
+situation (1 person talking):
+Number of people in the channel - 1 x the codec used
+Maximal stress situation (all persons talking in 1 channel):
+(Number of people - 1) squared x the codec used.
+
+Examples for both situations, 10 people in a channel on the GSM16.4 kilobit codec:
+10 - 1 x 16.4 kilobit = 147.6 KiloBits per second for the normal situation
+(10 - 1) squared x 16.4 kilobit =  1328,4 KiloBits per second for the maximal stress situation.
+
+If there are multiple channels you need to repeat this formula. The outcome of this number should 
+be smaller then your upload bandwidth of your connection. 
+
+
+5: Linux: installing
+
+	5.1: Installing the server
+Installing the server under linux is really easy. We will walk you through it here. The linux 
+server was compiled for the i386 architecture. Systems running linux under a different 
+architecture will not be able to run these binaries. 
+After downloading the package could have a  .tar.tar extension. You can easily fix it by renaming 
+the archive with: 
+mv server_linux_version_number.tar.tar server_linux_version_number.tar.bz2
+You can also completely disregard the extension and extract it with tar -jxvf.
+
+You need to unpack it with the following command:
+tar -jxvf server_linux_version_number. 
+A number of files will be unpacked in a tss_rc2 directory. Unpacking is installing in the case of 
+the linux server. So if you're done extracting, you have installed the server.
+
+We recommend making a special user for running the TeamSpeak server instead of running it under 
+root. You can do this with this command: 
+adduser tss. 
+This user will have a dir named /home/tss. Move the archive to that directory and unpack the 
+files there or move the files to this directory if you already have extracted the archive. Make 
+sure that all the files have the correct owner. If you are not sure do: 
+chown tss:tss * 
+when in the directory containing the files. 
+
+	5.2: Starting up the server
+You can start the server with the following command: 
+./tss_minimal_startupscript start
+or: 
+server_linux &
+Do not stress about an error that might popup on some linux boxes: "Error stating deamon". Even 
+with this error statement the server will run just fine.
+
+	5.3: Closing down the server 
+You can close down the server either with the script command or you can choose to kill it. The 
+script command would be (when in the home directory of the TeamSpeak server):
+./tss_minimal_startupscript stop
+You can also kill the server if the above command doesn't work properly:
+kill -9 server_linux.
+With 
+ps -ef 
+you can check all the processes running on your box and whether TeamSpeak has closed down properly. 
+
+
+6: Ports
+The TeamSpeak server is completely adjustable when it comes to ports. For a minimum default 
+working of the server you need to open or forward the default port UDP 8767 (but even this port 
+is adjustable to your needs). When you started the TeamSpeak server you can add servers running 
+on other ports by either the webadmin or the TCPquery. To alter the webadmin port or the TCPquery 
+port you need to edit the server.ini. The standard ports of these services are:
+14534 for the webadmin
+51234 for the TCQquery
+So if you want to change these default ports, open and edit the server.ini (located in the map you 
+installed TeamSpeak to).
+
+
+7: Webpost
+You can choose whether you want your server to show up in the Web Server list of clients (in other 
+words, choose whether you want your server and IP be public shown in the Web Server list). 
+You need to alter the Webpost section of the server.ini. 
+The default options are:
+[WebPost]
+AdminEmail=na
+ISPLinkURL=na
+ISPName=Private
+ISPCountry=Earth
+Enabled=1
+PostURL=
+ListPublic=1
+The options are pretty much straightforward. If you don't want the server to show up change the 
+Enabled to 0 (Enabled=0). For some scripts you can post the status of the server to a webpage. Fill 
+in the appropiate address in at PostURL. If you want to have your server listed as a public server 
+set ListPublic to 1, if you don't want this, set it to 0.
+
+
+8: Main Config
+You can change some default options in the server.ini by changing the [Main config] section.
+The default options look like this:
+[Main Config]
+ExternalIPDectection=1
+HTTPServer Port=14534
+HTTPServer Enabled=1
+DateTimeFormat=dd-mm-yyyy hh:nn:ss
+TCPQueryPort=51234
+BoundToIp=
+
+ExternalIPDetection is a Windows only option, leave it. You can change the default port of the 
+webadmin function of the TeamSpeak server in HTTPServer Port. Set it to a port you wish. After 
+that you can open the webadmin page by typing in the IP of your server and the corresponding port 
+(http://yourip:yourport).
+If you want to disable the webadmin function set HTTPServer enabled to 0.
+DateTimeFormat is a setting that allows you to change the format these are shown. It is adviced 
+to just keep these default settings.
+The TCPQuery port can be altered. Just replace the default port with a port you would like to have.
+If the computer your TeamSpeak server is installed on has multiple IP's you can set the proper IP 
+in the BoundToIP=  option. Just fill in the IP you want to use.
+
+
+9: Webadminning the server
+
+	9.1: Logging in
+To start adminning your server start by opening your web browser and point it to your server 
+(http://yourserverip:port).
+You will be presented a login window.
+If you want to edit another server than the default one, please enter the appropiate port (for 
+instance you are renting a server and it is located at port 9500 and you have a serveradmin 
+account, you need to fill in 9500 at the port). If you want to login as a superadmin (this is 
+an admin that can admin ALL servers running on an instance of TeamSpeak) please check the 
+superadmin box. If you provided the correct data you will be logged in now. You will see your 
+name, the server you are adminning and the local time of the server in the upper right corner 
+of the window.
+
+	9.2: Superadmin
+If you want to login as a superadmin (this is an admin that can admin ALL servers running on an 
+instance of TeamSpeak) please check the superadmin box.
+If you provided the correct data you will be logged in now.
+When you logged in as superadmin you need to choose the server you want to admin by clicking 
+Servers in the left menu and choose the correct server by clicking the arrow at the right of the 
+server of your choice.
+If you want to stop a running server click on the green logo next to it. 
+If you want to delete a server click on the red cross next to it (although unnecessary to say: 
+PLEASE BE CAREFUL WHEN DELETING SERVERS!)
+If you want to add a server to your set up click on add server. A new page will be presented and 
+you can fill in the data of your new server there. Pay attention to the server port!!! You need to 
+fill in a port that ISN'T used yet! When adding a server no restart is required. The servers 
+currently running won't be restarted and users connected to the server won't notice anything.
+The rest of the functions of a superadmin is the same as the serveradmin although a superadmin has 
+all the permissions, always. A normal server admin can still be restricted with the permission 
+system.
+
+	9.3: Server settings
+Server overview lets you see the settings of a server and provides some information. You cannot 
+alter any of the settings here. 
+In server settings you can alter a couple of things to your server (if you have the permission 
+to do so). The Serversettings page looks like this:
+Servername, ServerWelcomMessage and ServerMaxUsers are pretty clear. You can set a server password 
+on your server. Unregistered users can only log in to your server if they know the password. 
+Registered users can ALWAYS log in, regardless of the server password!
+You can change the password infinitely but registered users can always login with their personal 
+password and loginname!
+The servertype setting affects the server minimally. The only difference between the clan server 
+and the public server is that when a user connects to a public server, no sound notification will 
+be played back in the client. When a user connects to a clan server, a sound notification will be 
+played.
+If you don't want channels on your server to use a particular codec, you can uncheck the codec you 
+DON'T want used on your server. If there is a webpage running a status script for your server you 
+need to fill in the URL in Server Webpost URL.
+The last thing you can change is the serverport. Please choose a port that isn't already used!
+Click on save to make the changes permanent. The alterations you made will be shown realtime in the 
+client without the server restarting or the client disconnecting. 
+
+	9.4: Server Permissions
+This is were the real power of RC2 comes into play. TeamSpeak 2 works with 6 statuses for the 
+client:
+Server Admin, Channel Admin, Operator, Voiced, Registered and Anonymous
+For each of these statuses you can set permissions (what they are allowed to do on your server and 
+what they are not allowed). If you check a radiobutton behind a permission, it will be enabled. 
+Unchecked, this permission is disabled for the specific status. This manual will go over the 
+options of the Server Admin only. Since the other statuses only have fewer permissions than 
+stated in this status all things can be applied to the other statuses too. I will go over the 
+permissions one by one:
+
+AccessWebAdminServer: SA can access the webadmin function
+AccessTcpServer: SA can access the TCPquery function
+AccesVoice: SA can login in via the client to the TeamSpeak server
+AdminRegisterPlayer: SA can register a user in the client
+AdminListDBUsers: SA can see what users are registered in the webadmin
+AdminChangeOwnPassword: SA can change own password
+AdminChangeUserPassword: SA can change user's password
+AdminSetServerPermissions: SA can set the permissions on a server
+AdminListDBServers: SA can see what servers are running on a TeamSpeak server instance.
+AdminAddServer: SA can add a server to a TeamSpeak server instance
+AdminDeleteServer: SA can delete a server
+AdminEditServerIPPort: SA can change the port of a server
+AdminEditServerWebpostURL: SA can set the Webpost URL
+AdminEditServerName: SA can set the servername
+AdminEditServerMaxUsers: SA can set the max server users.
+AdminEditServerWelcomeMessage: SA can set the welcome message on a server
+AdminEditServerPassword: SA can set the server password
+AdminEditServertype: SA can set the server as Clan or Public
+AdminEditServerAllowedCodecs: SA can set the allowed codecs on a server
+AdminBanIP: SA can use the Ban IP function in the client
+AdminMovePlayer: SA can drag and drop players in the client over channels
+AdminStopServer: SA can stop a running server
+AdminStartServer: SA can start a server
+ChannelJoinedRegistered: SA can join a registered channel
+ChannelCreateRegistered: SA can create a registered channel in the client
+ChannelCreateUnregistered: SA can create a unregistered channel
+ChannelCreateDefault: SA can make a default channel (first channel when you join a server)
+ChannelCreatSubchannels: SA can create subchannels
+ChannelCreateModerated: SA can create moderated channels
+ChannelDelete: SA can delete a channel in the client
+ChannelEditName: SA can change the channel name
+ChannelEditPassword: SA can change the channel password
+ChannelEditTopic: SA can change the channel topic
+ChannelEditDescription: SA can change the channel description
+ChannelEditOrder: SA can set the order of a channel
+ChannelEditMaxusers: SA can set the maximum amount of users in a channel
+ChannelEditCodec: SA can set the codec used by the channel
+ChannelJoinWithoutPassword: SA can join every channel, even password protected ones
+PrivilegeGrantSA: SA can give SA status to other users
+PrivilegeGrantCA: SA can give CA status to other users
+PrivilegeGrantAutoOp: SA can give AutoOperator status to other users
+PrivilegeGrantOp: SA can give Operator status to other users
+PrivilegeGrantAutoV: SA can give AutoVoice to other users
+PrivilegeGrantV: SA can give Voice to other users
+PrivilegeGrantAllowRegistration: SA can allow users to register with server
+PrivilegeRevokeX: SA can revoke the status permissions earlier given to users
+PriviligeAdminPlayerRegister: SA can allow user to make them register users
+PrivilegePlayerDelete: SA can delete registered users in the webadmin
+PrivilegeRegisterSelfByDefault: Users with the SA status can always register with server
+SendTextToAll: SA can send text to all users currently on the server
+SendTextToOwnChannel: SA can send text to a channel they created
+SendTextToAllChannel: SA can send text to all channels of a server
+KickPlayerFromServer: SA can kick a user off a server
+KickPlayerFromChannel: SA can kick a user to the default channel
+AllowChannelCommander: SA can set the channel commander to him/herself
+
+These are all the configurable permissions (other statuses than SA have fewer options as you will 
+see in the respective pages but they are listed above. Just replace the SA name in the sentences 
+above here with the status you are editing)
+
+	9.5: User Manager
+With the user manager you can watch what users are registered on your server. 
+If you click on the blue settings button next to a name you can change the password of that user 
+and optionally make him/her a serveradmin by checking the respective radio button. Click on save 
+to make the alterations permanent.
+To delete a user on your server, click on the redcross next to the name. Be careful with this 
+function!
+With add client you can add a user to your server. Fill in the login name, password and decide 
+if this user needs to be a serveradmin and click on add. 
+
+	9.6: Logout
+Clicking this link will log you out.
+
+
+10: TCPquery function
+You can login to the TeamSpeak server via telnet. These are the commands you can use:
+help - gives a help with all commands
+sl - serverlist, displays all currently running servers
+pl <serverport> - playerlist, displays all connected players to a server
+cl <serverport> - channellist, displays all channels of a server
+ver - displays server version
+sel <serverport> - selects a server
+si <serverport> - displays server information
+msg <text> -sends a text to selected server
+msgall <text> -sends a text to all running servers
+login <username> <password> -login as normal user
+slogin <username> <password> -login as superadmin (needed for mostly all of tcpquery)
+serverstart <dbid> -starts the given server
+serverstop <serverport> -stops the given server
+serveradd <serverport> -adds a server
+serverset
+dbserverlist - displays a list of all servers
+checkserverok <serverport> - checks if a given server hangs
+dbuserlist - displays all registered users of a server
+dbuseradd <username> <pw1> <pw1> <serveradmin> - adds a user
+dbuserdel <dbid> - deletes a user
+dbuserchangepw <dbid> <newp1> <newp2> - changes password
+dbuserchangeattribs <dbid> <serveradmin> - grants/revokes serveradmin to a user
+quit - quits tcpquery
+
+
+11: Miscellaneous
+Webpost
+You can make your server post status details to a webpage. Have a look in our forum:
+http://www.teamspeak.org/forums/showthread.php?s=&threadid=1466
+
+
+12: Licensing
+TeamSpeak is freeware for non-commercial users. Commercial users need to buy a license. 
+Commercial use is defined as companies and their employees installing TeamSpeak.
+If the server is installed on a company owned server: you need to buy a license.
+If the server is installed by an employee of a company on a computer of a company: you need to 
+buy a license.
+If you are asking money to make use of your server: you need to buy a license.
+If TeamSpeak is used to as an assistence to your company's processes (be it in any way): you 
+need to buy a license.
+For information about commercial use of the TeamSpeak server, pricing information and ordering: 
+mail sales@teamspeak.org.
+
+
+13: Frequently Asked Questions
+
+	13.1:  Q: What ports does the server use?
+	A: The TeamSpeak Server uses the following ports:
+	8767 UDP, for the server itself.
+	Adjustable in the server.ini: ServerUDPPort=8767
+	14534 TCP, WebInterface
+	Adjustablein the server.ini: HTTPServer Port=14534
+	51234 TCP, TCPQuery port
+	Adjustable in the server.ini: TCPQueryPort=51234
+
+	To get server to work behind firewall, nat, masq you need only to open/forward the 
+	server port (in the above case: 8767 UDP).
+
+	13.2: Q: I lost my server admin password 
+	A: You should have noted it down! However you can look it up it in the server.log. 
+	If you are using Windows then you need to shutdown the server first to make this file 
+	accessable, linux users can just 'less' it.
+
+	13.3: Q: What support does TeamSpeak offer?
+	A: It depends if you are a commercial user or not. If you are a non-commercial user 
+	we offer support over our IRC channel (quakenet #teamspeak) and our forum 
+	(http://www.teamspeak.org/forum/ ).As a non-commercial user you CANNOT mail us for 
+	support! 
+	Since we have a enthousiastic crowd you can be pretty sure your questions will be 
+	answered in the forum or IRC channel.A word to the wise though: Especially in the 
+	IRC channel it is appreciated if you tried searching our forum first before you 
+	ask a question. From experience we can say that 95 % of all questions that are asked 
+	in IRC are already answered in the forum. Questions like: What port does TeamSpeak 
+	use? will most likely not be answered since it is stated in the F.A.Q., several 
+	answers in threads and in this manual.
+	If your question is unique: Be sure that there will be enthousiastic people that 
+	are keen to solve your problem!
+	Commercial users (and ONLY commercial users) can additionally use the mail for 
+	specific questions. Mail for commercial users: support@teamspeak.org. If you use 
+	this mail while being a non-commercial user: it will be ignored!
+
+
+14: Last Notes
+The TeamSpeak team isn't responsible for any damages done by the application or by doing 
+things that are described in this manual. We don't give guaranties on how good the application 
+works nor are we liable for things done when trying to run or installing the server. 
+Everything done with the application is at your own risk.
+

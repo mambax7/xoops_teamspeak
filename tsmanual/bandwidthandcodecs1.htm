@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Bandwidth and codecs</title>
+<link rel="stylesheet" href="C1H_HTML.css" type="text/css">
+<style type="text/css">
+ p { margin-top: 0; margin-bottom: 0; }
+</style>
+<script language="JavaScript" src="DocToHelp.js">
+</script>
+</head>
+<body
+ style="background-color: #FFFFFF;
+        background-image: url(none);
+        background-repeat: no-repeat;"
+ onload="d2hload()"
+ onmousedown="d2hpopup()"
+>
+<div id="ienav">
+<ilayer id="nsnav">
+<p align="center">
+
+<a href="RC2servermanual-toc.htm" target="left">Contents</a> &nbsp;
+
+
+<a href="RC2servermanual-index.htm" target="left">Index</a> &nbsp;
+
+
+
+<a href="whatsnewinteamspeakreleasecandidate21.htm">Previous</a> &nbsp;
+<a href="linuxinstalling.htm">Next</a>
+
+
+</p>
+<br>
+<hr noshade size="1">
+</ilayer>
+</div>
+<p class=kop-2>Bandwidth and codecs </p>
+<p class=kop-2-p>&nbsp;</p>
+<p class=standaard>The codec a channel uses is defined by an admin client. There are 5 codecs available ranging from the 5.1 CELP codec to the 16.4 GSM codec. These codecs produce different amounts of traffic for the server. The server itself at this point in time doesn&#8217;t support audio mixing and streaming such into one stream (the reason for this is that the server would require massive CPU cycles to decode all data streams and then mixing multiple streams together and encode it again). To calculate the amount of upload traffic per second of a single channel running TeamSpeak deamon under normal situation (1 person talking):</p>
+<p class=standaard>Number of people in the channel &#8211; 1 x the codec used</p>
+<p class=standaard>Maximal stress situation (all persons talking in 1 channel):</p>
+<p class=standaard>(Number of people &#8211; 1) squared x the codec used.</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>Examples for both situations, 10 people in a channel on the GSM16.4 kilobit codec:</p>
+<p class=standaard>10 &#8211; 1 x 16.4 kilobit = 147.6 KiloBits per second for the normal situation</p>
+<p class=standaard>(10 &#8211; 1) squared x 16.4 kilobit =  1328,4 KiloBits per second for the maximal stress situation.</p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>If there are multiple channels you need to repeat this formula. The outcome of this number should be smaller then your upload bandwidth of your connection. </p>
+<p class=standaard>&nbsp;</p>
+<p class=standaard>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="popupDiv">
+</div>
+</body>
+</html>
